@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <h2>Insert new meal</h2>
+        <form action="/" method="POST">
+            <label for="time">Time: </label>
+            <input name="time" id="time" type="datetime-local">
+            <label for="food">Food: </label>
+            <input name="food" id="food">
+            <label for="kcal">Kcal: </label>
+            <input name="kcal" id="kcal" type="number">
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+        <h2>Today's Calories</h2>
+        <ul>
+            <% let count = 0 %>
+            <% rows.forEach((row) => { %>
+                <li>
+                    <%= row.food %> - <%= row.kcal %> kcal
+                    <% count += Number(row.kcal) %>
+                </li>
+            <% }) %>
+        </ul>
+        <h3>Total: <%= count %> kcal</h3>
+    </body>
+</html>
