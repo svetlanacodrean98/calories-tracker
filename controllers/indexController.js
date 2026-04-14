@@ -1,10 +1,13 @@
 const db = require("../db/queries");
 
 async function getIndex(req, res) {
-    const rows = await db.getTodayRows();
-    res.render("index", {
-        rows: rows
-    });
+    try {
+        const rows = await db.getTodayRows();
+        res.render("index", { rows });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Something went wrong");
+    }
 }
 
 async function createRow(req, res) {
@@ -12,8 +15,8 @@ async function createRow(req, res) {
         const { time, food, kcal } = req.body;
         await db.insertRow(time, food, kcal);
         res.redirect("/");
-    }
-    catch(err) {
+    } catch (err) {
+        console.error(err);
         res.status(500).send("Something went wrong");
     }
 }
