@@ -1,8 +1,8 @@
 const pool = require("./pool");
 
-async function insertRow(time, food, kcal) {
-    await pool.query("insert into meals (time, food, kcal) values ($1, $2, $3)", 
-        [time, food, kcal]);
+async function insertRow(time, food, energy, weight, fat, saturated_fat, carbs, sugar, fiber, protein, salt) {
+    await pool.query("insert into meals (time, food, energy, weight, fat, saturated_fat, carbs, sugar, fiber, protein, salt) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)", 
+        [time, food, energy, weight, fat, saturated_fat, carbs, sugar, fiber, protein, salt]);
 }
 
 async function getTodayRows() {

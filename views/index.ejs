@@ -6,21 +6,85 @@
             <input name="time" id="time" type="datetime-local">
             <label for="food">Food: </label>
             <input name="food" id="food">
-            <label for="kcal">Kcal: </label>
-            <input name="kcal" id="kcal" type="number">
+            <label for="energy">Energy: </label>
+            <input name="energy" id="energy" type="number" step="0.1">
+            <label for="weight">Weight: </label>
+            <input name="weight" id="weight" type="number" step="0.1">
+            <label for="fat">Fat: </label>
+            <input name="fat" id="fat" type="number" step="0.1">
+            <label for="saturated_fat">Saturated Fat: </label>
+            <input name="saturated_fat" id="saturated_fat" type="number" step="0.1">
+            <label for="carbs">Carbs: </label>
+            <input name="carbs" id="carbs" type="number" step="0.1">
+            <label for="sugar">Sugar: </label>
+            <input name="sugar" id="sugar" type="number" step="0.1">
+            <label for="fiber">Fiber: </label>
+            <input name="fiber" id="fiber" type="number" step="0.1">
+            <label for="protein">Protein: </label>
+            <input name="protein" id="protein" type="number" step="0.1">
+            <label for="salt">Salt: </label>
+            <input name="salt" id="salt" type="number" step="0.1">
             <button type="submit">Submit</button>
         </form>
         <br>
-        <h2>Today's Calories</h2>
-        <ul>
-            <% let count = 0 %>
+        <h2>Today's Report</h2>
+        <table>
+            <tr>
+                <th>Food</th>
+                <th>Energy</th>
+                <th>Weight</th>
+                <th>Fat</th>
+                <th>Saturated Fat</th>
+                <th>Carbs</th>
+                <th>Sugar</th>
+                <th>Fiber</th>
+                <th>Protein</th>
+                <th>Salt</th>
+            </tr>
+            <% let countEnergy = 0 %>
+            <% let countWeight = 0 %>
+            <% let countFat = 0 %>
+            <% let countSaturatedFat = 0 %>
+            <% let countCarbs = 0 %>
+            <% let countSugar = 0 %>
+            <% let countFiber = 0 %>
+            <% let countProtein = 0 %>
+            <% let countSalt = 0 %>
             <% rows.forEach((row) => { %>
-                <li>
-                    <%= row.food %> - <%= row.kcal %> kcal
-                    <% count += Number(row.kcal) %>
-                </li>
+                <tr>
+                    <td><%= row.food %></td>
+                    <td><%= row.energy %></td>
+                    <td><%= row.weight %></td>
+                    <td><%= row.fat %></td>
+                    <td><%= row.saturated_fat %></td>
+                    <td><%= row.carbs %></td>
+                    <td><%= row.sugar %></td>
+                    <td><%= row.fiber %></td>
+                    <td><%= row.protein %></td>
+                    <td><%= row.salt %></td>
+                    <% countEnergy += Number(row.energy) %>
+                    <% countWeight += Number(row.weight) %>
+                    <% countFat += Number(row.fat) %>
+                    <% countSaturatedFat += Number(row.saturated_fat) %>
+                    <% countCarbs += Number(row.carbs) %>
+                    <% countSugar += Number(row.sugar) %>
+                    <% countFiber += Number(row.fiber) %>
+                    <% countProtein += Number(row.protein) %>
+                    <% countSalt += Number(row.salt) %>
+                </tr>
             <% }) %>
-        </ul>
-        <h3>Total: <%= count %> kcal</h3>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><%= countEnergy %></td>
+                <td><%= countWeight %></td>
+                <td><%= countFat %></td>
+                <td><%= countSaturatedFat %></td>
+                <td><%= countCarbs %></td>
+                <td><%= countSugar %></td>
+                <td><%= countFiber %></td>
+                <td><%= countProtein %></td>
+                <td><%= countSalt %></td>
+            </tr>
+            </table>
     </body>
 </html>

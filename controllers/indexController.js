@@ -6,18 +6,19 @@ async function getIndex(req, res) {
         res.render("index", { rows });
     } catch (err) {
         console.error(err);
-        res.status(500).send("Something went wrong");
+        res.status(500).send("Getting the rows went wrong");
     }
 }
 
 async function createRow(req, res) {
     try {
-        const { time, food, kcal } = req.body;
-        await db.insertRow(time, food, kcal);
+        const { time, food, energy, weight, fat, saturated_fat, carbs, sugar, fiber, protein, salt } = req.body;
+        console.log(req.body);
+        await db.insertRow(time, food, energy, weight, fat, saturated_fat, carbs, sugar, fiber, protein, salt);
         res.redirect("/");
     } catch (err) {
         console.error(err);
-        res.status(500).send("Something went wrong");
+        res.status(500).send("Creating a row went wrong");
     }
 }
 
