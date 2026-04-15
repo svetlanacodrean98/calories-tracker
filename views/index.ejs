@@ -6,23 +6,23 @@
             <input name="time" id="time" type="datetime-local">
             <label for="food">Food: </label>
             <input name="food" id="food">
-            <label for="energy">Energy: </label>
+            <label for="energy">Energy (kcal): </label>
             <input name="energy" id="energy" type="number" step="0.1">
-            <label for="weight">Weight: </label>
+            <label for="weight">Weight (g): </label>
             <input name="weight" id="weight" type="number" step="0.1">
-            <label for="fat">Fat: </label>
+            <label for="fat">Fat (g): </label>
             <input name="fat" id="fat" type="number" step="0.1">
-            <label for="saturated_fat">Saturated Fat: </label>
+            <label for="saturated_fat">Saturated Fat (g): </label>
             <input name="saturated_fat" id="saturated_fat" type="number" step="0.1">
-            <label for="carbs">Carbs: </label>
+            <label for="carbs">Carbs (g): </label>
             <input name="carbs" id="carbs" type="number" step="0.1">
-            <label for="sugar">Sugar: </label>
+            <label for="sugar">Sugar (g): </label>
             <input name="sugar" id="sugar" type="number" step="0.1">
-            <label for="fiber">Fiber: </label>
+            <label for="fiber">Fiber (g): </label>
             <input name="fiber" id="fiber" type="number" step="0.1">
-            <label for="protein">Protein: </label>
+            <label for="protein">Protein (g): </label>
             <input name="protein" id="protein" type="number" step="0.1">
-            <label for="salt">Salt: </label>
+            <label for="salt">Salt (g): </label>
             <input name="salt" id="salt" type="number" step="0.1">
             <button type="submit">Submit</button>
         </form>
@@ -84,6 +84,18 @@
                 <td><%= countFiber %></td>
                 <td><%= countProtein %></td>
                 <td><%= countSalt %></td>
+            </tr>
+            <tr>
+                <td><strong>Standard</strong></td>
+                <td>1800</td>
+                <td>-</td>
+                <td>70</td>
+                <td>20</td>
+                <td>260</td>
+                <td>25</td>
+                <td>25</td>
+                <td>50</td>
+                <td>6</td>
             </tr>
             </table>
     </body>
