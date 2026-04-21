@@ -3,8 +3,8 @@ const indexRouter = Router();
 const indexController = require("../controllers/indexController");
 
 
-indexRouter.get("/", indexController.getIndex);
-indexRouter.post("/", indexController.createRow);
+indexRouter.post("/meal", indexController.createRow);
+indexRouter.get("/meals", indexController.getMeals);
 
 module.exports = {
     indexRouter

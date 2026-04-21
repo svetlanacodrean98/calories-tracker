@@ -12,7 +12,14 @@ async function getTodayRows() {
     return rows;
 }
 
+async function getMealsForDate(date) {
+    const query = date ? `select * from meals where time::date = '${date}'` : "select * from meals"
+    const { rows } = await pool.query(query);
+    return rows;
+}
+
 module.exports = {
     getTodayRows,
-    insertRow
+    insertRow,
+    getMealsForDate
 };
