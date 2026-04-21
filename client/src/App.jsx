@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const serverUrl = "http://localhost:3000";
+
 function App() {
-  const [serverUrl, setServerUrl] = useState("http://localhost:3000");
   const [fetchedMeals, setFetchedMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
