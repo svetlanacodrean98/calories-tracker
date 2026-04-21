@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [serverUrl, setServerUrl] = useState("http://localhost:8010/proxy");
+  const [serverUrl, setServerUrl] = useState("http://localhost:3000");
   const [fetchedMeals, setFetchedMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,71 +20,12 @@ function App() {
     salt: 0,
   });
 
-  function setTime(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      time: e.target.value,
-    });
-  }
-  function setFood(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      food: e.target.value,
-    });
-  }
-  function setEnergy(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      energy: Number(e.target.value),
-    });
-  }
-  function setWeight(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      weight: Number(e.target.value),
-    });
-  }
-  function setFat(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      fat: Number(e.target.value),
-    });
-  }
-  function setSaturatedFat(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      saturated_fat: Number(e.target.value),
-    });
-  }
-  function setCarbs(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      carbs: Number(e.target.value),
-    });
-  }
-  function setSugar(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      sugar: Number(e.target.value),
-    });
-  }
-  function setFiber(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      fiber: Number(e.target.value),
-    });
-  }
-  function setProtein(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      protein: Number(e.target.value),
-    });
-  }
-  function setSalt(e) {
-    setCurrentMeal({
-      ...currentMeal,
-      salt: Number(e.target.value),
-    });
+  function handleChange(e) {
+    const { name, value, type } = e.target;
+    setCurrentMeal((prev) => ({
+      ...prev,
+      [name]: type === "number" ? Number(value) : value,
+    }));
   }
 
   useEffect(() => {
@@ -119,14 +60,14 @@ function App() {
           id="time"
           type="datetime-local"
           value={currentMeal.time}
-          onChange={setTime}
+          onChange={handleChange}
         />
         <label htmlFor="food">Food: </label>
         <input
           name="food"
           id="food"
           value={currentMeal.food}
-          onChange={setFood}
+          onChange={handleChange}
         />
         <label htmlFor="energy">Energy (kcal): </label>
         <input
@@ -135,7 +76,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.energy}
-          onChange={setEnergy}
+          onChange={handleChange}
         />
         <label htmlFor="weight">Weight (g): </label>
         <input
@@ -144,7 +85,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.weight}
-          onChange={setWeight}
+          onChange={handleChange}
         />
         <label htmlFor="fat">Fat (g): </label>
         <input
@@ -153,7 +94,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.fat}
-          onChange={setFat}
+          onChange={handleChange}
         />
         <label htmlFor="saturated_fat">Saturated Fat (g): </label>
         <input
@@ -162,7 +103,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.saturated_fat}
-          onChange={setSaturatedFat}
+          onChange={handleChange}
         />
         <label htmlFor="carbs">Carbs (g): </label>
         <input
@@ -171,7 +112,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.carbs}
-          onChange={setCarbs}
+          onChange={handleChange}
         />
         <label htmlFor="sugar">Sugar (g): </label>
         <input
@@ -180,7 +121,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.sugar}
-          onChange={setSugar}
+          onChange={handleChange}
         />
         <label htmlFor="fiber">Fiber (g): </label>
         <input
@@ -189,7 +130,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.fiber}
-          onChange={setFiber}
+          onChange={handleChange}
         />
         <label htmlFor="protein">Protein (g): </label>
         <input
@@ -198,7 +139,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.protein}
-          onChange={setProtein}
+          onChange={handleChange}
         />
         <label htmlFor="salt">Salt (g): </label>
         <input
@@ -207,7 +148,7 @@ function App() {
           type="number"
           step="0.1"
           value={currentMeal.salt}
-          onChange={setSalt}
+          onChange={handleChange}
         />
         <button type="submit" disabled={isLoading}>
           Submit
